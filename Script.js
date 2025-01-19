@@ -1,23 +1,5 @@
 
-        function autoplayAudio() {
-            // Create a new audio element
-            const audio = new Audio();
-            
-            // Set the source of the audio
-            audio.src = 'Dunki.mp3'; // Replace with your audio file path
-            
-            // Enable looping if needed
-            audio.loop = true;
-
-            // Try to play the audio
-            audio.play().catch(error => {
-              console.log("Autoplay blocked. Interaction may be required:", error);
-            });
-        }
-
-        // Trigger audio play when the button is clicked
-        document.getElementById('playAudioButton').addEventListener('click', autoplayAudio);
-
+        
 
 var radius = 240; 
 var autoRotate = true; 
