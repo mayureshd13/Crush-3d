@@ -1,0 +1,160 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    touch-action: none; /* Support for touch screens */
+  }
+  
+  body {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  /* Drag and Spin Containers */
+  #drag-container,
+  #spin-container {
+    position: relative;
+    display: flex;
+    transform-style: preserve-3d;
+    transform: rotateX(-10deg);
+    perspective-origin: center;
+  }
+  
+  /* Media Elements */
+  #drag-container img,
+  #drag-container video {
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    transition: transform 0.5s, box-shadow 0.5s;
+  }
+
+  #drag-container video {
+    object-fit: cover;
+    width: 100%; 
+    height: 100%; 
+    border-radius: 10px; 
+  }
+  
+  
+  #drag-container img::after,
+  #drag-container video::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Offset for reflection */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Use the same content as the parent */
+    transform: scaleY(-1); /* Flip vertically */
+    opacity: 0.3; /* Make it appear like a reflection */
+    filter: blur(2px); /* Add blur for a realistic effect */
+    z-index: -1; /* Place it behind the main element */
+    transition: transform 0.5s ease, z-index 0.5s ease;
+
+  }
+  
+  #text{
+    color: whitesmoke;
+    font-weight: bold;
+    font-weight: bold;
+    color: #fff; /* Base color of the text */
+    text-shadow: 
+      0 0 10px #fff, 
+      0 0 20px #ff00ff, 
+      0 0 30px #ff00ff, 
+      0 0 40px #ff00ff, 
+      0 0 50px #ff00ff, 
+      0 0 60px #ff00ff;
+
+  }
+  /* Ground */
+  #ground {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg);
+    background: radial-gradient(circle, rgba(153, 153, 153, 0.2), transparent);
+    filter: blur(3px); /* Softer edges */
+  }
+  
+  /* Music Controls */
+  #music-container {
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+  }
+  
+  #music-container audio {
+    outline: none;
+    border-radius: 5px;
+  }
+  
+  /* Animations */
+  @keyframes spin {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  @keyframes spinRevert {
+    from {
+      transform: rotateY(360deg);
+    }
+    to {
+      transform: rotateY(0deg);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      perspective: 800px;
+    }
+  
+    #ground {
+      width: 700px;
+      height: 700px;
+    }
+  
+    #drag-container img,
+    #drag-container video {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #ground {
+      width: 500px;
+      height: 500px;
+    }
+  
+    #drag-container img,
+    #drag-container video {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+  }
+  
