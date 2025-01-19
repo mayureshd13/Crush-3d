@@ -31,11 +31,37 @@
         </div>
         <div id="ground"></div>
     </div>
-        <div>
+    <div>
         <button class="glow-on-hover">Click Me</button>
-    </div>
 
-    <!-- github corner (https://github.com/tholman/github-corners) -->
+        <audio id="audio" src="Dunki.mp3"></audio>
+
+    </div>
+    <script>
+        const audio = document.getElementById('audio');
+        const playButton = document.getElementById('playButton');
+
+        // Ensure the audio file is loaded
+        audio.addEventListener('canplaythrough', () => {
+            console.log("Audio loaded successfully.");
+        });
+
+        // Handle errors if the audio file is not found
+        audio.addEventListener('error', (e) => {
+            console.error("Error loading audio:", e);
+        });
+
+        // Add event listener for the play button
+        playButton.addEventListener('click', function() {
+            // Try to play the audio and log any errors
+            audio.play().then(() => {
+                console.log("Audio is playing.");
+            }).catch(error => {
+                console.log("Error playing audio:", error);
+            });
+        });
+        </script>
+        <!-- github corner (https://github.com/tholman/github-corners) -->
     <style>
         .github-corner:hover .octo-arm {
             animation: octocat-wave 560ms ease-in-out
@@ -69,8 +95,9 @@
             }
         }
     </style>
+        
+    
     <script src="Script.js"></script>
-
 </body>
 
 </html>
