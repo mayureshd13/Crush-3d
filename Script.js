@@ -16,7 +16,7 @@ function autoplayAudio() {
   }
 
   // Call the function on page load
-  window.onload = autoplayAudio;
+  window.onload = autoplayAudio();
 
 
 var radius = 240; 
